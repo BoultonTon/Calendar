@@ -1,0 +1,30 @@
+import calendar
+from datetime import datetime
+
+def gerar_calendario(ano, mes):
+    """Gera um calendário para o mês e distribui as turnos de trabalho."""
+    dias_no_mes = calendar.monthrange(ano, mes)[1]
+    calendario = {}
+    funcionarios = ['Funcionário 1', 'Funcionário 2', 'Funcionário 3', 'Funcionário 4',
+                    'Funcionário 5', 'Funcionário 6', 'Funcionário 7', 'Funcionário 8']
+    turno = 0
+
+    for dia in range(1, dias_no_mes + 1):
+        calendario[dia] = funcionarios[turno % len(funcionarios)]
+        turno += 1
+
+    return calendario
+
+def imprimir_calendario(calendario):
+    """Imprime o calendário de turnos de trabalho."""
+    print("Calendário de Turnos de Trabalho:")
+    for dia, funcionario in calendario.items():
+        print(f"Dia {dia}: {funcionario}")
+
+# Defina o ano e o mês para o qual você deseja criar o calendário de turnos
+ano_atual = datetime.now().year
+mes_atual = datetime.now().month
+
+# Gerar e imprimir o calendário de turnos
+calendario_de_turnos = gerar_calendario(ano_atual, mes_atual)
+imprimir_calendario(calendario_de_turnos)
